@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>App</title>
+</head>
+<body>
+    <h1>Build</h1>
+    <div>
+        <label for="config">Choose from the list:</label>       
+        <select id="config">           
+            <option value="Choose" selected>Choose</option> 
+            <option value="Container" id="container">Run Docker Container</option>
+            <option value="Script" id="bash">Run Bash Script</option>
+        </select> 
+        <form action="#" method="GET" id="form" name="form">
+            <button type="submit" id="run-btn">Run</button>
+        </form>  
+    </div>
+    <script>
+        const button = document.getElementById('run-btn')
+        const config = document.getElementById('config')
+
+        button.addEventListener('click', () => {
+            console.log(config.value)
+
+            switch (config.value) {
+
+                case 'Container':
+                    console.log('cont -- ainer')
+                    document.form.action = '/container'
+                    break
+
+                case 'Script':
+                    document.form.action = '/bash'
+                    break
+
+                default:
+                    document.form.action = '/'
+                    break
+            }
+
+        })
+    </script>   
+</body>
+</html>
